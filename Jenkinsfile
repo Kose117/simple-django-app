@@ -22,7 +22,10 @@ pipeline {
     }
     post {
         always {
-            sh 'python3 cool_counters/manage.py runserver'
+            sh '''
+                (python3 cool_counters/manage.py runserver 0.0.0.0:8000 &)
+                sleep 5
+            '''
         }
     }
 }
