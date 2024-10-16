@@ -17,8 +17,12 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh 'python3 cool_counters/manage.py migrate'
-                sh 'python3 cool_counters/manage.py runserver'
             }
+        }
+    }
+    post {
+        always {
+            sh 'python3 cool_counters/manage.py runserver'
         }
     }
 }
