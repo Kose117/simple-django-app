@@ -11,13 +11,13 @@ pipeline {
         // }
         stage('Test'){
             steps {
-                sh 'pylint simple-django-app.cool_counters'
+                sh 'pylint cool_counters'
             }
         }
         stage('Deploy') {
             steps {
-                sh 'python3 simple-django-app/cool_counters/manage.py migrate'
-                sh 'python3 simple-django-app/cool_counters/manage.py runserver'
+                sh 'python3 cool_counters/manage.py migrate'
+                sh 'python3 cool_counters/manage.py runserver'
             }
         }
     }
