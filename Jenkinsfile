@@ -11,7 +11,7 @@ pipeline {
         // }
         stage('Test'){
             steps {
-                sh 'pylint cool_counters.manage'
+                sh 'pylint --recursive=y cool_counters.manage'
             }
         }
         stage('Deploy') {
