@@ -4,11 +4,6 @@ pipeline {
         skipStagesAfterUnstable()
     }
     stages {
-        // stage('Build') {
-        //     steps {
-        //         sh 'git clone https://github.com/Kose117/simple-django-app'
-        //     }
-        // }
         stage('Test'){
             steps {
                 sh 'pylint --recursive=y cool_counters | exit 0'
@@ -22,9 +17,11 @@ pipeline {
     }
     post {
         always {
+                // (python3 cool_counters/manage.py runserver 0.0.0.0:8000 &)
+                // sleep 5
             sh '''
-                (python3 cool_counters/manage.py runserver 0.0.0.0:8000 &)
-                sleep 5
+                docker build -t simple-django-app .
+                docker container run simple-django-app
             '''
         }
     }
