@@ -20,7 +20,7 @@ pipeline {
                 // (python3 cool_counters/manage.py runserver 0.0.0.0:8000 &)
                 // sleep 5
             sh '''
-                gpasswd -a $USER docker
+                gpasswd -a $USER estudiante
                 docker context use default
                 newgrp docker
                 docker build -t simple-django-app .
