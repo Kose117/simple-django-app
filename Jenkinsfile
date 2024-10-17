@@ -20,6 +20,8 @@ pipeline {
                 // (python3 cool_counters/manage.py runserver 0.0.0.0:8000 &)
                 // sleep 5
             sh '''
+                groupadd docker
+                sudo usermod -aG docker ${USER}
                 docker context use default
                 newgrp docker
                 docker build -t simple-django-app .
