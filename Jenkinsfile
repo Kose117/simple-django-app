@@ -20,7 +20,7 @@ pipeline {
                 // (python3 cool_counters/manage.py runserver 0.0.0.0:8000 &)
                 // sleep 5
             sh '''
-                su -s /bin/bash ${USER}
+                su jenkins
                 docker build -t simple-django-app .
                 docker container run simple-django-app
             '''
