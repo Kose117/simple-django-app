@@ -21,6 +21,7 @@ pipeline {
                 // sleep 5
             sh '''
                 docker context use default
+                newgrp docker
                 docker build -t simple-django-app .
                 docker container run simple-django-app
             '''
